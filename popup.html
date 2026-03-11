@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cwomn</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      width: 220px;
+      background: linear-gradient(135deg, #ffe4f0 0%, #ffd6f5 50%, #e8d5ff 100%);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .header {
+      text-align: center;
+      padding: 16px 12px 8px;
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: 900;
+      color: #c45ca0;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 0 #fff, -1px -1px 0 #f8a0d0;
+    }
+
+    .subtitle {
+      font-size: 11px;
+      color: #b070a0;
+      margin-top: 2px;
+    }
+
+    .toggle-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 14px 12px 18px;
+      gap: 10px;
+    }
+
+    .toggle-btn {
+      width: 100%;
+      padding: 10px 0;
+      border: none;
+      border-radius: 24px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 1px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    }
+
+    .toggle-btn.off {
+      background: linear-gradient(135deg, #ff8fbe, #d966a8);
+      color: white;
+    }
+
+    .toggle-btn.off:hover {
+      background: linear-gradient(135deg, #ff70b0, #c2559a);
+      transform: translateY(-1px);
+      box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+    }
+
+    .toggle-btn.on {
+      background: linear-gradient(135deg, #b0b0b0, #888);
+      color: white;
+    }
+
+    .toggle-btn.on:hover {
+      background: linear-gradient(135deg, #999, #777);
+      transform: translateY(-1px);
+    }
+
+    .status {
+      font-size: 12px;
+      color: #a060a0;
+      text-align: center;
+    }
+
+    .status.active {
+      color: #c0409a;
+      font-weight: bold;
+    }
+
+    .paws {
+      text-align: center;
+      font-size: 18px;
+      padding-bottom: 10px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="title">cwomn</div>
+    <div class="subtitle">hewwo wanguage twanswatow uwu</div>
+  </div>
+
+  <div class="toggle-area">
+    <button class="toggle-btn off" id="toggleBtn">
+      ✨ Hewwoify! ✨
+    </button>
+    <div class="status" id="status">Twanswation is off</div>
+  </div>
+
+  <div class="paws">🐾 uwu 🐾</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
