@@ -80,6 +80,18 @@ function hewwoify(text) {
     return `${punct}~`;
   });
 
+  // Sprinkle random ASCII emojis between words throughout the text
+  const WORD_EMOJI_CHANCE = 0.05;
+  t = t.replace(/ /g, (space) => {
+    if (Math.random() < WORD_EMOJI_CHANCE) return ` ${randomEmoji()} `;
+    return space;
+  });
+
+  // Always add an emoji at the end of non-trivial text
+  if (t.trim().length > 20 && Math.random() < 0.3) {
+    t = t + ' ' + randomEmoji();
+  }
+
   return t;
 }
 
