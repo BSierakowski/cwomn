@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "cwomn",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Twanswate aww text on da page into da cutest hewwo wanguage uwu",
   "permissions": ["activeTab", "scripting", "storage"],
   "action": {
