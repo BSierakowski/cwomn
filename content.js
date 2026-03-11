@@ -12,6 +12,17 @@ const SKIP_TAGS = new Set([
 
 // --- Hewwo transformation rules ---
 
+const ASCII_EMOJIS = [
+  '(✿^‿^)', '(≧ω≦)', '(◕‿◕)', '(ﾉ´ヮ`)ﾉ', '(⁀ᗢ⁀)',
+  '(｡♥‿♥｡)', 'ヾ(＾∇＾)', '(★ω★)', '(◍•ᴗ•◍)', '(づ｡◕‿◕｡)づ'
+];
+
+const EMOJI_CHANCE = 0.08;
+
+function randomEmoji() {
+  return ASCII_EMOJIS[Math.floor(Math.random() * ASCII_EMOJIS.length)];
+}
+
 function hewwoify(text) {
   // Don't touch whitespace-only strings
   if (!text.trim()) return text;
@@ -52,14 +63,21 @@ function hewwoify(text) {
   t = t.replace(/N([aeiou])/g, 'Ny$1');
   t = t.replace(/N([AEIOU])/g, 'NY$1');
 
-  // Sprinkle "~" after sentence-ending punctuation, and occasionally add "pwincess"
+  // Sprinkle "~" after sentence-ending punctuation, and occasionally add "pwincess" or ASCII emoji
   const PRINCESS_CHANCE = 0.15;
   t = t.replace(/([.!?])(~?\s)/g, (_, punct, space) => {
-    const insert = Math.random() < PRINCESS_CHANCE ? `${punct}~ pwincess,` : `${punct}~`;
+    const roll = Math.random();
+    let insert;
+    if (roll < PRINCESS_CHANCE) insert = `${punct}~ pwincess,`;
+    else if (roll < PRINCESS_CHANCE + EMOJI_CHANCE) insert = `${punct}~ ${randomEmoji()}`;
+    else insert = `${punct}~`;
     return insert + space;
   });
   t = t.replace(/([.!?])$/g, (_, punct) => {
-    return Math.random() < PRINCESS_CHANCE ? `${punct}~ pwincess~` : `${punct}~`;
+    const roll = Math.random();
+    if (roll < PRINCESS_CHANCE) return `${punct}~ pwincess~`;
+    if (roll < PRINCESS_CHANCE + EMOJI_CHANCE) return `${punct}~ ${randomEmoji()}`;
+    return `${punct}~`;
   });
 
   return t;
